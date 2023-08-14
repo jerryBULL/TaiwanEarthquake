@@ -1,0 +1,179 @@
+*{
+    font-size: 14px;
+    font-family: monospace;
+}
+body,
+html{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+header,
+footer{
+    background: #51C3A6;
+    height: 50px;
+
+    p{
+        color: #fff;
+    }
+}
+header p{
+    font-size: 30px;
+}
+
+.main{
+    height: calc(100% - 100px);
+    padding: 15px;
+    max-width: 1920px;
+    margin: 0 auto;
+
+    .taiwan_map{
+        height: 100%;
+        width: 50%;
+        position: relative;
+
+        svg{
+            position: absolute;
+            height: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            top: 50%;
+            left: 50%;
+
+            .counties{
+                fill:#5caf98;
+            }
+            .county_borders{
+                fill: none;
+                stroke: #fff;
+                stroke-width: 0.5px;
+            }
+        }
+    }
+    .earthquake_list{
+        width: 50%;
+        height: 100%;
+        border: 5px solid #51C3A6;
+        border-radius: 15px;
+
+        .tab{
+            display: flex;
+            height: 50px;
+
+            div{
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-bottom: 3px solid #235799;
+                color: #235799;
+                font-size: 17px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                &:hover{
+                    background: #235799;
+                    color: #fff;
+                }
+                &:first-child{
+                    border-radius: 10px 0 0 0;
+                }
+                &:last-child{
+                    border-radius: 0 10px 0 0;
+                }
+                &.active{
+                    background: #235799;
+                    color: #fff;
+                    cursor: default;
+                }
+            }
+        }
+
+        .list{
+            height: calc(100% - 50px);
+            padding: 10px 10px 0 10px;
+            overflow-y: auto;
+
+            &::-webkit-scrollbar{
+                display: none;
+            }
+            .info_box{
+                margin-bottom: 10px;
+                border: 3px solid #AEEFDF;
+                border-radius: 10px;
+                padding: 10px 15px;
+                transition: all 0.3s ease;
+
+                .header{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .vibration{
+                        height: 38px;
+                        min-width: 38px;
+                        border-radius: 50%;
+                        margin-right: 15px;
+
+                        &.green{
+                            background: #afe759;
+                        }
+                        &.yello{
+                            background: #f1c93f;
+                        }
+                        &.orange{
+                            background: #f39800;
+                        }
+                        &.red{
+                            background: #e14242;
+                        }
+                    }
+                    img{
+                        width: 40px;
+                        transition: all 0.3s ease;
+                        cursor: pointer;
+
+                        &.reverse{
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+                .content{
+                    display: none;
+                    border-top: 3px solid #AEEFDF;
+                    margin-top: 10px;
+                    padding-top: 10px;
+
+                    &.show{
+                        display: block;
+                    }
+                    .influence_city_list{
+                        padding-left: 28px;
+
+                        li{
+                            list-style-type: circle;
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+}
+
+/*
+@media (max-width: 767px) {
+}
+@media (max-width: 480px) {
+}
+@media (min-width: 768px) and (max-width: 979px) {
+}
+@media (min-width: 980px) {
+}
+@media (min-width: 1200px) {
+}
+*/

@@ -1,0 +1,167 @@
+* {
+  font-size: 14px;
+  font-family: monospace;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+header,
+footer {
+  background: #51C3A6;
+  height: 50px;
+}
+header p,
+footer p {
+  color: #fff;
+}
+
+header p {
+  font-size: 30px;
+}
+
+.main {
+  height: calc(100% - 100px);
+  padding: 15px;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+.main .taiwan_map {
+  height: 100%;
+  width: 50%;
+  position: relative;
+}
+.main .taiwan_map svg {
+  position: absolute;
+  height: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+}
+.main .taiwan_map svg .counties {
+  fill: #5caf98;
+}
+.main .taiwan_map svg .county_borders {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 0.5px;
+}
+.main .earthquake_list {
+  width: 50%;
+  height: 100%;
+  border: 5px solid #51C3A6;
+  border-radius: 15px;
+}
+.main .earthquake_list .tab {
+  display: flex;
+  height: 50px;
+}
+.main .earthquake_list .tab div {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 3px solid #235799;
+  color: #235799;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.main .earthquake_list .tab div:hover {
+  background: #235799;
+  color: #fff;
+}
+.main .earthquake_list .tab div:first-child {
+  border-radius: 10px 0 0 0;
+}
+.main .earthquake_list .tab div:last-child {
+  border-radius: 0 10px 0 0;
+}
+.main .earthquake_list .tab div.active {
+  background: #235799;
+  color: #fff;
+  cursor: default;
+}
+.main .earthquake_list .list {
+  height: calc(100% - 50px);
+  padding: 10px 10px 0 10px;
+  overflow-y: auto;
+}
+.main .earthquake_list .list::-webkit-scrollbar {
+  display: none;
+}
+.main .earthquake_list .list .info_box {
+  margin-bottom: 10px;
+  border: 3px solid #AEEFDF;
+  border-radius: 10px;
+  padding: 10px 15px;
+  transition: all 0.3s ease;
+}
+.main .earthquake_list .list .info_box .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main .earthquake_list .list .info_box .header .vibration {
+  height: 38px;
+  min-width: 38px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+.main .earthquake_list .list .info_box .header .vibration.green {
+  background: #afe759;
+}
+.main .earthquake_list .list .info_box .header .vibration.yello {
+  background: #f1c93f;
+}
+.main .earthquake_list .list .info_box .header .vibration.orange {
+  background: #f39800;
+}
+.main .earthquake_list .list .info_box .header .vibration.red {
+  background: #e14242;
+}
+.main .earthquake_list .list .info_box .header img {
+  width: 40px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.main .earthquake_list .list .info_box .header img.reverse {
+  transform: rotate(180deg);
+}
+.main .earthquake_list .list .info_box .content {
+  display: none;
+  border-top: 3px solid #AEEFDF;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+.main .earthquake_list .list .info_box .content.show {
+  display: block;
+}
+.main .earthquake_list .list .info_box .content .influence_city_list {
+  padding-left: 28px;
+}
+.main .earthquake_list .list .info_box .content .influence_city_list li {
+  list-style-type: circle;
+}
+
+/*
+@media (max-width: 767px) {
+}
+@media (max-width: 480px) {
+}
+@media (min-width: 768px) and (max-width: 979px) {
+}
+@media (min-width: 980px) {
+}
+@media (min-width: 1200px) {
+}
+*//*# sourceMappingURL=style.css.map */
