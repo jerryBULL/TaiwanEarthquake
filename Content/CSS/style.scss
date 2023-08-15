@@ -17,16 +17,46 @@ footer{
         color: #fff;
     }
 }
-header p{
-    font-size: 30px;
+header{
+    p{
+        font-size: 30px;
+    }
+    .taiwan_icon{
+        background: #bcdbd3;
+        border-radius: 50%;
+        height: 35px;
+        width: 35px;
+        margin-right: 10px;
+
+        .twicon-main-island{
+            font-size: 30px;
+            color: #3ea98e;
+        }
+    }
+}
+footer{
+    img{
+        width: 17px;
+        margin-right: 10px;
+    }
+}
+
+header,
+footer,
+.main{
+    min-width: 370px;
 }
 
 .main{
     height: calc(100% - 100px);
+    min-height: 405px;
     padding: 15px;
     max-width: 1920px;
     margin: 0 auto;
 
+    &::-webkit-scrollbar{
+        display: none;
+    }
     .taiwan_map{
         height: 100%;
         width: 50%;
@@ -34,9 +64,6 @@ header p{
 
         svg{
             position: absolute;
-            height: 100%;
-            top: 50%;
-            transform: translateY(-50%);
             transform: translate(-50%, -50%);
             width: 100%;
             height: 100%;
@@ -51,6 +78,9 @@ header p{
                 stroke: #fff;
                 stroke-width: 0.5px;
             }
+            .circle{
+                cursor: pointer;
+            }
         }
     }
     .earthquake_list{
@@ -61,7 +91,7 @@ header p{
 
         .tab{
             display: flex;
-            height: 50px;
+            height: 40px;
 
             div{
                 flex: 1;
@@ -101,28 +131,52 @@ header p{
             &::-webkit-scrollbar{
                 display: none;
             }
+            .loading,
+            .data_empty{
+                height: calc(100% - 10px);
+
+                img{
+                    width: 70px;
+                }
+                p{
+                    margin-top: 10px;
+                    font-size: 17px;
+                }
+            }
             .info_box{
                 margin-bottom: 10px;
                 border: 3px solid #AEEFDF;
                 border-radius: 10px;
                 padding: 10px 15px;
-                transition: all 0.3s ease;
+                transition: all 0.25s cubic-bezier(0.4, 0, 1, 1);
 
+                &.show{
+                    box-shadow: 5px 5px 1px #0000001a;
+
+                    .header .arrow{
+                        transform: rotate(180deg);
+                        cursor: default;
+                    }
+                    .content{
+                        height: auto;
+                    }
+                }
                 .header{
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
 
                     .vibration{
-                        height: 38px;
-                        min-width: 38px;
+                        height: 20px;
+                        min-width: 20px;
                         border-radius: 50%;
                         margin-right: 15px;
+                        position: relative;
 
                         &.green{
                             background: #afe759;
                         }
-                        &.yello{
+                        &.yellow{
                             background: #f1c93f;
                         }
                         &.orange{
@@ -131,25 +185,64 @@ header p{
                         &.red{
                             background: #e14242;
                         }
+                        &:hover{
+                            .tip{
+                                display: block;
+                            }
+                        }
+                        img{
+                            height: 100%;
+                            width: 100%;
+                        }
+                        .tip{
+                            display: none;
+                            position: absolute;
+                            width: 180px;
+                            left: 30px;
+                            background: #fff;
+                            border: 3px solid #AEEFDF;
+                            border-radius: 10px;
+                            padding: 5px 10px;
+                            text-align: center;
+
+                            &::before{
+                                content: "";
+                                position: absolute;
+                                display: block;
+                                width: 15px;
+                                height: 15px;
+                                top: 50%;
+                                transform: translateY(-50%) rotate(45deg);
+                                background: #AEEFDF;
+                                left: -6px;
+                                z-index: -1;
+                            }
+                        }
                     }
-                    img{
+                    .info p{
+                        &:not(:first-child){
+                            font-size: 18px;
+                            font-weight: 600;
+                        }
+                    }
+                    .arrow{
                         width: 40px;
                         transition: all 0.3s ease;
                         cursor: pointer;
-
-                        &.reverse{
-                            transform: rotate(180deg);
-                        }
                     }
                 }
                 .content{
-                    display: none;
-                    border-top: 3px solid #AEEFDF;
-                    margin-top: 10px;
-                    padding-top: 10px;
+                    height: 0;
+                    overflow: hidden;
 
-                    &.show{
-                        display: block;
+                    hr{
+                        height: 3px;
+                        background: #AEEFDF;
+                        border: none;
+                        margin: 10px 0;
+                    }
+                    p{
+                        font-size: 16px;
                     }
                     .influence_city_list{
                         padding-left: 28px;
@@ -160,20 +253,21 @@ header p{
                     }
                 }
             }
-            
         }
     }
 }
 
-/*
-@media (max-width: 767px) {
+@media (max-width: 700px) {
+    .main{
+        display: block;
+        overflow: auto;
+        
+        .taiwan_map{
+            height: 400px;
+            width: 100%;
+        }
+        .earthquake_list{
+            width: 100%;
+        }
+    }
 }
-@media (max-width: 480px) {
-}
-@media (min-width: 768px) and (max-width: 979px) {
-}
-@media (min-width: 980px) {
-}
-@media (min-width: 1200px) {
-}
-*/
