@@ -147,23 +147,25 @@
                 OpenEarthquakeInfo: function(key){
                     let v_this = this;
 
-                    let arrangeEarthquakeData = v_this.earthquakeData[v_this.tab].map((value, idx) => {
-                        value.show = false;
+                    if(v_this.earthquakeData[v_this.tab].length != 0){
+                        let arrangeEarthquakeData = v_this.earthquakeData[v_this.tab].map((value, idx) => {
+                            value.show = false;
 
-                        return value;
-                    });
-                    v_this.earthquakeData[v_this.tab] = arrangeEarthquakeData;
+                            return value;
+                        });
+                        v_this.earthquakeData[v_this.tab] = arrangeEarthquakeData;
 
-                    v_this.earthquakeData[v_this.tab][key].show = true;
+                        v_this.earthquakeData[v_this.tab][key].show = true;
 
-                    let earthquakeInfo = v_this.earthquakeData[v_this.tab][key];
-                    v_this.DrawMarkRipple(key, earthquakeInfo.locationLon, earthquakeInfo.locationLat);
+                        let earthquakeInfo = v_this.earthquakeData[v_this.tab][key];
+                        v_this.DrawMarkRipple(key, earthquakeInfo.locationLon, earthquakeInfo.locationLat);
 
-                    setTimeout(() => {
-                        //滑動到指定 tag
-                        let tag = document.querySelectorAll(".info_box")[key];
-                        tag.scrollIntoView({ behavior: "smooth", block: "center"});
-                    }, 200);
+                        setTimeout(() => {
+                            //滑動到指定 tag
+                            let tag = document.querySelectorAll(".info_box")[key];
+                            tag.scrollIntoView({ behavior: "smooth", block: "center"});
+                        }, 200);
+                    }
                 },
                 //
                 GetMap: function() {
@@ -272,8 +274,6 @@
                     let v_this = this;
                     let url = "https://script.google.com/macros/s/AKfycbww1-KZ9PQZLF3VaRGnW6YTEEU_DOw3bsZY1lTFIksAOhZe0iZk04Ty80XHrB0d-CiP/exec";
                     url += "?method=GetEarthquakeData"
-
-                    url = "./Content/earthquake_test_data.json"
 
                     axiosAjax.RequsetGet(url)
                         .then(res => {
